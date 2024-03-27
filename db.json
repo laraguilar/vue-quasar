@@ -1,0 +1,16 @@
+{
+    "posts": [
+        { 
+            "id": 1,
+            "title": "Curso para Doguinhos",
+            "content": "Como morder o chinelo do seu dono.",
+            "author": "Laika"
+        },
+        {
+            "id": 2,
+            "title": "Como matar as pulgas",
+            "content": "Um guia de como evitar que pulgas te mordam",
+            "author": "Bob"
+        }
+    ]
+}
