@@ -1,10 +1,10 @@
 import { api } from 'boot/axios'
 
-export default function UseApi() {
+export default function UseApi(url) {
 
   const list = async () => {
     try {
-      const { data } = await api.get()
+      const { data } = await api.get(url)
       return data
     } catch (error) {
       throw new Error(error)
@@ -31,7 +31,7 @@ export default function UseApi() {
 
   const remove = async (id) => {
     try {
-      const { data } = await api.put(`${url}/${id}`)
+      const { data } = await api.delete(`${url}/${id}`)
       return data
     } catch (error) {
       throw new Error(error)

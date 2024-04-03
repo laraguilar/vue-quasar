@@ -11,10 +11,10 @@
           :props="props"
         >
         <q-btn
-          flat
           dense
           round
           icon="delete"
+          color="negative"
           @click="handleDeletePost(props.row.id)"
           />
         </q-td>
@@ -25,8 +25,8 @@
 
 <script>
 import { defineComponent, onMounted, ref } from 'vue';
-import postService from 'src/services/postService';
 import { useQuasar } from 'quasar';
+import postService from 'src/services/posts';
 
 export default defineComponent({
   name: 'IndexPage',
@@ -78,7 +78,8 @@ export default defineComponent({
 
     const getPosts = async () => {
       try {
-        const { data } = await list();
+        const data = await list();
+        console.log(data);
         posts.value = data;
       } catch (error) {
         console.error(error);
@@ -89,11 +90,10 @@ export default defineComponent({
       try {
         $q.dialog({
         title: 'Remove post',
-        message: 'Would you like to remove this post?',
+        message: 'Would you like to delete this post?',
         cancel: true,
         persistent: true
       }).onOk(async () => {
-        // console.log('>>>> OK')
         await remove(id);
         $q.notify({message: 'Post deleted successfully', icon: 'check', color: 'positive'});
         await getPosts();
